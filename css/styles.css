@@ -11709,3 +11709,7 @@ body {
     display: none;
   }
 }
+
+.img-fill-container {
+  min-width: 100%;
+}
