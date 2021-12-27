@@ -60,7 +60,6 @@ window.addEventListener('DOMContentLoaded', event => {
     fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=4&collection=sinewavemountains', options)
       .then(response => response.json())
       .then(response => {
-          console.log(response.assets)
           var count = 0;
           response.assets.forEach((asset) => {
               img_asset = document.getElementById('img-asset' + count);
@@ -69,7 +68,6 @@ window.addEventListener('DOMContentLoaded', event => {
               info_asset = document.querySelector('#info-asset' + count + ' h4');
               info_asset.innerHTML = asset.name;
               link_asset = document.querySelector('#info-asset' + count + ' p a');
-              console.log(link_asset)
               link_asset.href = asset.permalink;
               count = count + 1;
           });
