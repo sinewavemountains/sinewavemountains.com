@@ -3,6 +3,9 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
 */
+/*!
+* Modified by Studio Kura in 2021
+*/
 //
 // Scripts
 // 
@@ -50,5 +53,25 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+
+    const options = {method: 'GET'};
+
+
+    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=4&collection=sinewavemountains', options)
+      .then(response => response.json())
+      .then(response => {
+          var count = 0;
+          response.assets.forEach((asset) => {
+              img_asset = document.getElementById('img-asset' + count);
+              img_asset.src = asset.image_url;
+              img_asset.alt = asset.name;
+              info_asset = document.querySelector('#info-asset' + count + ' h4');
+              info_asset.innerHTML = asset.name;
+              link_asset = document.querySelector('#info-asset' + count + ' p a');
+              link_asset.href = asset.permalink;
+              count = count + 1;
+          });
+      })
+      // .catch(err => console.error(err));
 
 });
