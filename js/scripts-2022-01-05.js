@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', event => {
     };
 
 
-    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=4&collection=sinewavemountains', options)
+    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=6&collection=sinewavemountains', options)
       .then(response => response.json())
       .then(response => {
           var count = 0;
@@ -75,6 +75,8 @@ window.addEventListener('DOMContentLoaded', event => {
               link_asset = document.querySelector('#info-asset' + count + ' p a');
               link_asset.href = asset.permalink;
               count = count + 1;
+              filler_images = document.querySelector('img.img-fill-container-filtered');
+              filler_images.classList.remove('img-fill-container-filtered');
           });
       })
       // .catch(err => console.error(err));
