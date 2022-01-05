@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', event => {
     };
 
 
-    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=4&collection=sinewavemountains', options)
+    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=6&collection=sinewavemountains', options)
       .then(response => response.json())
       .then(response => {
           var count = 0;
