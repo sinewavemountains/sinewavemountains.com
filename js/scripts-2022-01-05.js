@@ -75,6 +75,8 @@ window.addEventListener('DOMContentLoaded', event => {
               link_asset = document.querySelector('#info-asset' + count + ' p a');
               link_asset.href = asset.permalink;
               count = count + 1;
+              filler_images = document.querySelector('img.img-fill-container-filtered');
+              filler_images.classList.remove('img-fill-container-filtered');
           });
       })
       // .catch(err => console.error(err));
