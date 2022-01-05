@@ -54,7 +54,12 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    const options = {method: 'GET'};
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-API-KEY': '325a1d5a27f040b8a15947a0c3aa378f'
+        }
+    };
 
 
     fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=4&collection=sinewavemountains', options)
