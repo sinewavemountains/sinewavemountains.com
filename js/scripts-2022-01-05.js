@@ -54,6 +54,8 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    const collection = 'sinewavemountains';
+    const limit = 6;
     const options = {
         method: 'GET',
         headers: {
@@ -62,7 +64,7 @@ window.addEventListener('DOMContentLoaded', event => {
     };
 
 
-    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=6&collection=sinewavemountains', options)
+    fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=' + limit + '&collection=' + collection, options)
       .then(response => response.json())
       .then(response => {
           var count = 0;
@@ -80,5 +82,18 @@ window.addEventListener('DOMContentLoaded', event => {
           });
       })
       // .catch(err => console.error(err));
+
+    fetch('https://api.opensea.io/api/v1/collection/' + collection, options)
+      .then(response => response.json())
+      .then(response => {
+          console.log("collection", response.collection.stats);
+          total_supply = document.getElementById('total_supply');
+          total_supply.innerHTML = response.collection.stats.total_supply;
+          num_owners = document.getElementById('num_owners');
+          num_owners.innerHTML = response.collection.stats.num_owners;
+          floor_price = document.getElementById('floor_price');
+          floor_price.innerHTML = response.collection.stats.floor_price;
+      })
+      .catch(err => console.error(err));
 
 });
